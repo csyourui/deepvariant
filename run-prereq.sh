@@ -47,7 +47,6 @@ source settings.sh
 note_build_stage "Misc setup"
 
 APT_ARGS=(
-"-qq"
 "-y"
 )
 
@@ -59,12 +58,10 @@ if [[ "$EUID" = "0" ]]; then
   # Ensure sudo exists, even if we don't need it.
   apt-get update "${APT_ARGS[@]}" > /dev/null
   apt-get install "${APT_ARGS[@]}" sudo > /dev/null
-  PIP_ARGS=(
-    "-qq")
+  PIP_ARGS=()
 else
   PIP_ARGS=(
-    "--user"
-    "-qq")
+    "--user")
 fi
 
 note_build_stage "Update package list"
@@ -111,6 +108,7 @@ echo "$(pip3 --version)"
 ################################################################################
 
 note_build_stage "Install python3 packages"
+pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple
 
 pip3 install "${PIP_ARGS[@]}" contextlib2
 pip3 install "${PIP_ARGS[@]}" etils typing_extensions importlib_resources
