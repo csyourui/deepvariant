@@ -44,4 +44,5 @@ WORKDIR /opt/deepvariant
 RUN echo "Acquire::http::proxy \"$http_proxy\";\n" \
          "Acquire::https::proxy \"$https_proxy\";" > "/etc/apt/apt.conf"
 
-RUN ./build-prereq.sh
+RUN ./build-prereq.sh \
+  && PATH="${HOME}/bin:${PATH}" ./build_release_binaries.sh  # PATH for bazel
