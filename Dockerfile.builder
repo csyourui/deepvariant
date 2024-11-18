@@ -14,7 +14,7 @@
 ARG FROM_IMAGE=nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
 # PYTHON_VERSION is also set in settings.sh.
 ARG PYTHON_VERSION=3.8
-ARG DV_GPU_BUILD=1
+ARG DV_GPU_BUILD=0
 ARG VERSION=1.6.0
 
 FROM continuumio/miniconda3 as conda_setup
