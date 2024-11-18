@@ -24,5 +24,5 @@ jobs:
 
     - name: Build and push image
       run: |
-        docker build -f Dockerfile.builder --target builder -t registry.cn-hangzhou.aliyuncs.com/yourui/deepvariant_builder:latest .
+        docker build -f Dockerfile.builder -t registry.cn-hangzhou.aliyuncs.com/yourui/deepvariant_builder:latest .
         docker push registry.cn-hangzhou.aliyuncs.com/yourui/deepvariant_gpu_builder:latest
